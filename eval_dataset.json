@@ -1,0 +1,142 @@
+[
+  {
+    "question": "What are the two dialing modes supported by the SmartDialer assignment?",
+    "expected_answer": "The SmartDialer supports Progressive Dialing and Predictive Dialing.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "direct_lookup"
+  },
+  {
+    "question": "What is the primary goal of a Progressive Dialer?",
+    "expected_answer": "A Progressive Dialer creates at most one outbound call per available agent and prioritizes safety and predictability.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "direct_lookup"
+  },
+  {
+    "question": "What problem does Predictive Dialing try to solve?",
+    "expected_answer": "Predictive Dialing aims to improve agent utilization by initiating calls before agents become free based on estimated answer rates.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "conceptual"
+  },
+  {
+    "question": "What component must exist between the Predictive Pacing Engine and the Telecom Provider?",
+    "expected_answer": "A Safety Controller must exist between the Predictive Pacing Engine and the Telecom Provider.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "architecture"
+  },
+  {
+    "question": "Can the Predictive Pacing Engine directly place outbound calls?",
+    "expected_answer": "No. The Predictive Pacing Engine can only suggest call volume, while the Safety Controller decides whether calls are allowed.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "architecture"
+  },
+  {
+    "question": "What actions can the Safety Controller take when receiving a dialing request?",
+    "expected_answer": "The Safety Controller can approve, reduce, reject, or fall back to progressive behavior.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "direct_lookup"
+  },
+  {
+    "question": "Name three agent states mentioned in the assignment.",
+    "expected_answer": "Examples include AVAILABLE, RESERVED, and CONNECTED.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "direct_lookup"
+  },
+  {
+    "question": "What is the purpose of the RESERVED agent state?",
+    "expected_answer": "The RESERVED state indicates that an agent has been allocated for a call and should not be assigned again.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "state_management"
+  },
+  {
+    "question": "Why must two workers not reserve the same available agent simultaneously?",
+    "expected_answer": "Because a single agent can handle only one call at a time, and duplicate reservations would create inconsistent system behavior.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "concurrency"
+  },
+  {
+    "question": "Name three call states mentioned in the assignment.",
+    "expected_answer": "Examples include QUEUED, RINGING, and COMPLETED.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "direct_lookup"
+  },
+  {
+    "question": "How should the system handle duplicate provider events such as multiple ANSWERED events?",
+    "expected_answer": "The system should remain consistent and avoid creating duplicate state transitions through idempotent processing.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "failure_handling"
+  },
+  {
+    "question": "What challenge is demonstrated by receiving COMPLETED before ANSWERED?",
+    "expected_answer": "It demonstrates the need to handle out-of-order events from the telecom provider.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "failure_handling"
+  },
+  {
+    "question": "How should Provider A behave in the simulation?",
+    "expected_answer": "Provider A should be fast, reliable, and have a low failure rate.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "provider_design"
+  },
+  {
+    "question": "How should Provider B behave in the simulation?",
+    "expected_answer": "Provider B should be slower and may generate timeouts, duplicate events, and out-of-order events.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "provider_design"
+  },
+  {
+    "question": "What should happen if a worker crashes after initiating a call?",
+    "expected_answer": "The system should be able to recover and continue processing without losing call state or creating inconsistencies.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "failure_handling"
+  },
+  {
+    "question": "What factors may be considered by a Predictive Pacing Engine?",
+    "expected_answer": "Factors may include agent availability, calls ringing, historical answer rate, average call duration, and provider health.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "predictive_dialing"
+  },
+  {
+    "question": "What should happen when the telecom provider starts timing out?",
+    "expected_answer": "The system should manage existing calls, control retries, adjust pacing, and prevent unsafe dialing behavior.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "failure_handling"
+  },
+  {
+    "question": "What metrics should be shown when evaluating predictive dialing scenarios?",
+    "expected_answer": "Metrics should include agent utilization, calls initiated, calls connected, pacing decisions, and Safety Controller decisions.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "analytics"
+  },
+  {
+    "question": "What is more important than a sophisticated machine learning model in this assignment?",
+    "expected_answer": "Correctness, safety, and preventing unsafe call allocation are more important than a sophisticated ML model.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "evaluation"
+  },
+  {
+    "question": "What is the key objective of the final SmartDialer design question?",
+    "expected_answer": "To maximize the utilization benefits of predictive dialing while preserving the deterministic safety characteristics of progressive dialing.",
+    "source": "document.pdf",
+    "answerable": true,
+    "category": "design_principle"
+  }
+]
